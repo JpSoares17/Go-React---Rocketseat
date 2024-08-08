@@ -15,7 +15,7 @@ INSERT INTO rooms
     ($1)
 RETURNING "id";
 
--- name: GetMessages :one
+-- name: GetMessage :one
 SELECT
     "id", "room_id", "message", "reaction_count", "answered"
 FROM messages

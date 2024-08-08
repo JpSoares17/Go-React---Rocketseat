@@ -11,7 +11,7 @@ import (
 	"github.com/google/uuid"
 )
 
-const getMessages = `-- name: GetMessages :one
+const getMessage = `-- name: GetMessage :one
 SELECT
     "id", "room_id", "message", "reaction_count", "answered"
 FROM messages
@@ -19,8 +19,8 @@ WHERE
     id = $1
 `
 
-func (q *Queries) GetMessages(ctx context.Context, id uuid.UUID) (Message, error) {
-	row := q.db.QueryRow(ctx, getMessages, id)
+func (q *Queries) GetMessage(ctx context.Context, id uuid.UUID) (Message, error) {
+	row := q.db.QueryRow(ctx, getMessage, id)
 	var i Message
 	err := row.Scan(
 		&i.ID,
